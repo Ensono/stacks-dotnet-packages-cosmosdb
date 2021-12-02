@@ -210,6 +210,7 @@ stages:
           CosmosDb__DatabaseAccountUri: $[ dependencies.AppInfraDeploy.outputs['tfoutputs.cosmosdb_endpoint'] ]
           COSMOSDB_KEY: $[ dependencies.AppInfraDeploy.outputs['tfoutputs.cosmosdb_primary_master_key'] ]
         steps:
+          - bash: env | sort
           - template: azDevOps/azure/templates/v2/steps/build-dotnet-package.yml@templates
             parameters:
               # Build Config
