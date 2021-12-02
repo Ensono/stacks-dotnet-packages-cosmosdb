@@ -13,3 +13,8 @@ output "cosmosdb_primary_master_key" {
   sensitive   = true
   value       = module.cosmosdb.cosmosdb_primary_master_key
 }
+
+output "cosmosdb_database_name" {
+  description = "Database name"
+  value       = module.cosmosdb.cosmosdb_database_name
+}
