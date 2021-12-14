@@ -1,8 +1,6 @@
-
-
 # Naming convention
 module "default_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.16.0"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.24.1"
   namespace  = "${var.name_company}-${var.name_project}"
   stage      = var.stage
   name       = "${lookup(var.location_name_map, var.resource_group_location, "uksouth")}-${var.name_domain}"
@@ -26,7 +24,7 @@ resource "azurerm_resource_group" "default" {
 ##################################################
 
 module "cosmosdb" {
-  source         = "git::https://github.com/amido/stacks-terraform//azurerm/modules/azurerm-cosmosdb?ref=v1.3.6"
+  source         = "git::https://github.com/amido/stacks-terraform//azurerm/modules/azurerm-cosmosdb?ref=v1.5.0"
   resource_namer = module.default_label.id
   resource_tags  = module.default_label.tags
 
