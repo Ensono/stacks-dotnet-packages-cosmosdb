@@ -24,7 +24,7 @@ resource "azurerm_resource_group" "default" {
 ##################################################
 
 module "cosmosdb" {
-  source         = "git::https://github.com/amido/stacks-terraform//azurerm/modules/azurerm-cosmosdb?ref=v1.5.0"
+  source         = "git::https://github.com/amido/stacks-terraform//azurerm/modules/azurerm-cosmosdb?ref=v1.5.2"
   resource_namer = module.default_label.id
   resource_tags  = module.default_label.tags
 
