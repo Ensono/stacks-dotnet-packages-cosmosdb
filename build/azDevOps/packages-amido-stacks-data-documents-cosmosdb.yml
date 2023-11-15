@@ -41,7 +41,7 @@ variables:
     value: amido-stacks-rg-uks-prod
   # Path specific for this package, change accordingly
   - name: Package.Feed
-    value: "Stacks"
+    value: ""
   - name: Package.Public
     value: true
   - name: Package.nuget_service_connection
@@ -91,8 +91,8 @@ resources:
   repositories:
     - repository: templates
       type: github
-      name: amido/stacks-pipeline-templates
-      ref: refs/tags/v2.0.1
+      name: Ensono/stacks-pipeline-templates
+      ref: refs/heads/feature/cycle4
       # Created when you set up the connection to GitHub from Azure DevOps
       endpoint: amidostacks
   containers:
@@ -109,7 +109,7 @@ stages:
     jobs:
       - job: Validation
         pool:
-          vmImage: "ubuntu-18.04"
+          vmImage: "ubuntu-22.04"
         steps:
           - checkout: self
 
@@ -141,7 +141,7 @@ stages:
         dependsOn: Validation
         container: terraform_custom
         pool:
-          vmImage: ubuntu-18.04
+          vmImage: ubuntu-22.04
         variables:
           - name: Environment.ShortName
             value: pkgs
@@ -221,4 +221,4 @@ stages:
               publish_public: "$(Package.Public)"
               nuget_service_connection: "$(Package.nuget_service_connection)"
               # .NET Core version variables
-              dotnet_core_version: "3.1.x"
+              dotnet_core_version: "6.0.x"
